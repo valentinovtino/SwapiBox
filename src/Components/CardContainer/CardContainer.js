@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { fetchApi } from '../../api/api.js';
 import People from '../People/People.js';
+import { getHomeWorld, getSpecies } from '../../api/helper.js';
 
 class CardContainer extends Component{
   constructor(props){
@@ -13,8 +14,8 @@ class CardContainer extends Component{
 async componentDidMount() {
   const { cardType } = this.props
   const categoryData = await fetchApi(cardType)
-  const homeWorldObj = await this.getHomeWorld(categoryData)
-  const speciesObj = await this.getSpecies(categoryData)
+  const homeWorldObj = await getHomeWorld(categoryData)
+  const speciesObj = await getSpecies(categoryData)
   const cleanedCardData = this.combineObj(homeWorldObj, speciesObj)
 
   this.setState({cleanedCardData}) //set resolved promise to state
@@ -30,29 +31,29 @@ combineObj = (homeWorldObj, speciesObj) => {
   return mainObj
 }
 
-getHomeWorld = (categoryObj) => {
-  const categoryArray = categoryObj.results;
+// getHomeWorld = (categoryObj) => {
+//   const categoryArray = categoryObj.results;
 
-  const unresolvedPromises = categoryArray.map( async (peopleKey) => {
-    const response = await fetch(peopleKey.homeworld)
-    const data = await response.json()
+//   const unresolvedPromises = categoryArray.map( async (peopleKey) => {
+//     const response = await fetch(peopleKey.homeworld)
+//     const data = await response.json()
 
-    return { CharacterName: peopleKey.name, HomeWorld: data.name, Population: data.population }
-  })
+//     return { CharacterName: peopleKey.name, HomeWorld: data.name, Population: data.population }
+//   })
 
-  return Promise.all(unresolvedPromises)
-}
+//   return Promise.all(unresolvedPromises)
+// }
 
-getSpecies = (categoryData) => {
-  const categoryArray = categoryData.results
-  const unresolvedPromises = categoryArray.map( async (peopleKey) => {
-    const response = await fetch(peopleKey.species)
-    const data = await response.json()
+// getSpecies = (categoryData) => {
+//   const categoryArray = categoryData.results
+//   const unresolvedPromises = categoryArray.map( async (peopleKey) => {
+//     const response = await fetch(peopleKey.species)
+//     const data = await response.json()
 
-    return {species: data.name}
-  })
-  return Promise.all(unresolvedPromises)
-}
+//     return {species: data.name}
+//   })
+//   return Promise.all(unresolvedPromises)
+// }
 
   render() {
     // console.log(this.state.categoryData)
