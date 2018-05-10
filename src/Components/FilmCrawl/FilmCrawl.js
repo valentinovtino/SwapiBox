@@ -23,7 +23,6 @@ async componentDidMount() {
   this.setState({filmData})
 }
 
-
   render() {
     return(
         <div>
