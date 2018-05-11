@@ -18,6 +18,8 @@ class App extends Component {
       <div className="App">
         <FilmCrawl/>
         <button>People</button>
+        <button>Planets</button>
+        <button>Vehicle</button>
         <CardContainer cardType={this.state.cardType}/>
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { fetchApi } from '../../api/api.js';
-import People from '../People/People.js';
+import Card from '../Card/Card';
 import { getHomeWorld, getSpecies } from '../../api/helper.js';
 
 class CardContainer extends Component{
@@ -23,44 +23,24 @@ async componentDidMount() {
 
 combineObj = (homeWorldObj, speciesObj) => {
   let combo;
-  const mainObj = homeWorldObj.reduce((acc, item, i) => {
+  const combinedObj = homeWorldObj.reduce((acc, item, i) => {
     combo = Object.assign({}, speciesObj[i])
     acc.push({...item, ...combo})
     return acc
   }, [])
-  return mainObj
+  return combinedObj
 }
 
-// getHomeWorld = (categoryObj) => {
-//   const categoryArray = categoryObj.results;
-
-//   const unresolvedPromises = categoryArray.map( async (peopleKey) => {
-//     const response = await fetch(peopleKey.homeworld)
-//     const data = await response.json()
-
-//     return { CharacterName: peopleKey.name, HomeWorld: data.name, Population: data.population }
-//   })
-
-//   return Promise.all(unresolvedPromises)
-// }
-
-// getSpecies = (categoryData) => {
-//   const categoryArray = categoryData.results
-//   const unresolvedPromises = categoryArray.map( async (peopleKey) => {
-//     const response = await fetch(peopleKey.species)
-//     const data = await response.json()
-
-//     return {species: data.name}
-//   })
-//   return Promise.all(unresolvedPromises)
-// }
-
+createCard = (data) => {
+  const makeCard = data.map((person)=> {
+    return <Card person={person}/>
+  })
+  return makeCard;
+}
   render() {
-    // console.log(this.state.categoryData)
     return (
         <div>
-          <People cleanedCardData={this.state.cleanedCardData}/>
-
+          {this.createCard(this.state.cleanedCardData)}
         </div>
       )
   }
