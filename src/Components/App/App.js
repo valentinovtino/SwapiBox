@@ -9,18 +9,28 @@ class App extends Component {
     super(props);
     this.state = {
       film: [],
-      cardType: 'people'
+      cardType: ''
     }
+  }
+
+  handleClick = (event) => {
+
+    this.setState({cardType: event.target.value})
   }
 
   render() {
     return (
       <div className="App">
         <FilmCrawl/>
-        <button>People</button>
-        <button>Planets</button>
-        <button>Vehicle</button>
-        <CardContainer cardType={this.state.cardType}/>
+        <button onClick={this.handleClick} value='people' className='button'>People</button>
+        <button onClick={this.handleClick} value='planets' className='button'>Planets</button>
+        <button onClick={this.handleClick} value='vehicles' className='button'>Vehicle</button>
+        <button>Favorites</button>
+
+        <div>
+        {this.state.cardType && <CardContainer cardType={this.state.cardType}/>}
+        </div>
+
       </div>
     );
   }

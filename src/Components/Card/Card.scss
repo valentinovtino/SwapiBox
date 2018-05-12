@@ -1,9 +1,16 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
 .card {
-    width: 100px;
-    height: 100px;
-    border: 1px solid white
+    width: 260px;
+    height: 250px;
+    border: 1px solid white;
+    padding: 10px;
+    text-align: center;
 }
 
 .font {
-    color: green
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }

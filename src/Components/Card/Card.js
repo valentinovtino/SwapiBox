@@ -8,16 +8,19 @@ class Card extends Component {
             favorite: false,
         }
     }
-    card = (props) => {
-        const { CharacterName, HomeWorld, Population, Species} = this.props.person
+    card = () => {
+        const { dynamic1, dynamic2, dynamic3, dynamic4, dynamic5} = this.props.element
         
         return(
-            <div className='card'> 
-            <h2 className='font'>{ CharacterName }</h2>
-            <h3 className='font'>{ HomeWorld }</h3>
-            <h3 className='font'>{ Population }</h3>
-            <h3 className='font'>{ Species }</h3>
-        </div>
+            <div className='card-container'>
+                <div className='card'> 
+                    <h2 className='font'>{ dynamic1 }</h2>
+                    <h3 className='font'>{ dynamic2 }</h3>
+                    <h3 className='font'>{ dynamic3 }</h3>
+                    <h3 className='font'>{ dynamic4}</h3>
+                    <h3 className='font'>{ dynamic5}</h3>
+                </div>
+            </div>
 
 )
 }
