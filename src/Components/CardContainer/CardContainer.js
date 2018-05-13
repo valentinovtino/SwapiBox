@@ -4,7 +4,7 @@ import Card from '../Card/Card';
 // import { getHomeWorld, getSpecies, getPlanetDetails, getVehicleDetails } from '../../api/helper.js';
 
 export const CardContainer = ({ allState }) => {
-const someshit = allState.cardType
+const cardClicked = allState.cardType
 
   const createCard = (data) => {
     const makeCard = data.map((element) => {
@@ -17,7 +17,7 @@ const someshit = allState.cardType
 
   return (
     allState.cardType ?
-    createCard(allState[someshit]) :
+    createCard(allState[cardClicked]) :
     <div>
       <p>hi</p>
     </div>

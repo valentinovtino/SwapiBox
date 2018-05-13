@@ -4,16 +4,16 @@ import App from './App.js';
 import { shallow } from 'enzyme';
 
 describe('App', () => {
-    // let wrapper;
+    let app;
     
 
-    // beforeEach( async () => {
-    //     wrapper = await shallow(<App />)
+    beforeEach( async () => {
+        app = shallow(<App />, {disableLifecycleMethods: true})
 
-    // })
+    })
 
     it.skip('should match the snapshot', () => {
-        const appSnapShot = renderer.create(wrapper).JSON;
+        const appSnapShot = renderer.create(<App />).JSON;
 
         expect(appSnapShot).toMatchSnapshot();
     })
@@ -21,6 +21,29 @@ describe('App', () => {
         // console.log(wrapper)
        const wrapper = await shallow(<App />)
         expect(wrapper.state().film).toEqual([])
+        expect(wrapper.state().people).toEqual([])
+        expect(wrapper.state().vehicles).toEqual([])
+        expect(wrapper.state().planets).toEqual([])
+        expect(wrapper.state().cleanedCardData).toEqual([])
 
     })
+
+    it('should setState', () => {
+
+    })
+
+    it('should call fetchApi', () => {
+
+    })
+
+    it('should call checkCardType with the correct params', () => {
+
+    })
+    
+    it('should update vehicle ste when getVehicleData is called', () => {
+
+    })
+
+    it('conbineObj should return correct Obj')
+
 })
