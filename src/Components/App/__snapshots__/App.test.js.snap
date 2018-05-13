@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match the snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <App />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <FilmCrawl />,
+        <button
+          className="button"
+          onClick={[Function]}
+          value="people"
+>
+          People
+</button>,
+        <button
+          className="button"
+          onClick={[Function]}
+          value="planets"
+>
+          Planets
+</button>,
+        <button
+          className="button"
+          onClick={[Function]}
+          value="vehicles"
+>
+          Vehicle
+</button>,
+        <button>
+          Favorites
+</button>,
+        <div />,
+      ],
+      "className": "App",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "People",
+          "className": "button",
+          "onClick": [Function],
+          "value": "people",
+        },
+        "ref": null,
+        "rendered": "People",
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Planets",
+          "className": "button",
+          "onClick": [Function],
+          "value": "planets",
+        },
+        "ref": null,
+        "rendered": "Planets",
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Vehicle",
+          "className": "button",
+          "onClick": [Function],
+          "value": "vehicles",
+        },
+        "ref": null,
+        "rendered": "Vehicle",
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Favorites",
+        },
+        "ref": null,
+        "rendered": "Favorites",
+        "type": "button",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "",
+        },
+        "ref": null,
+        "rendered": "",
+        "type": "div",
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <FilmCrawl />,
+          <button
+            className="button"
+            onClick={[Function]}
+            value="people"
+>
+            People
+</button>,
+          <button
+            className="button"
+            onClick={[Function]}
+            value="planets"
+>
+            Planets
+</button>,
+          <button
+            className="button"
+            onClick={[Function]}
+            value="vehicles"
+>
+            Vehicle
+</button>,
+          <button>
+            Favorites
+</button>,
+          <div />,
+        ],
+        "className": "App",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "People",
+            "className": "button",
+            "onClick": [Function],
+            "value": "people",
+          },
+          "ref": null,
+          "rendered": "People",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Planets",
+            "className": "button",
+            "onClick": [Function],
+            "value": "planets",
+          },
+          "ref": null,
+          "rendered": "Planets",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Vehicle",
+            "className": "button",
+            "onClick": [Function],
+            "value": "vehicles",
+          },
+          "ref": null,
+          "rendered": "Vehicle",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Favorites",
+          },
+          "ref": null,
+          "rendered": "Favorites",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "",
+          },
+          "ref": null,
+          "rendered": "",
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+    "disableLifecycleMethods": true,
+  },
+}
+`;

@@ -92,7 +92,7 @@ class App extends Component {
     return (
       <div className="App">
         <FilmCrawl />
-        <button onClick={this.handleClick} value='people' className='button'>People</button>
+        <button onClick={this.handleClick} value='people' className='people-btn'>People</button>
         <button onClick={this.handleClick} value='planets' className='button'>Planets</button>
         <button onClick={this.handleClick} value='vehicles' className='button'>Vehicle</button>
         <button>Favorites</button>

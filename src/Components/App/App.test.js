@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+// import renderer from 'react-test-renderer';
 import App from './App.js';
 import { shallow } from 'enzyme';
 
@@ -12,10 +12,10 @@ describe('App', () => {
 
     })
 
-    it.skip('should match the snapshot', () => {
-        const appSnapShot = renderer.create(<App />).JSON;
+    it('should match the snapshot', () => {
+        // const appSnapShot = create(<App />).JSON;
 
-        expect(appSnapShot).toMatchSnapshot();
+        expect(app).toMatchSnapshot();
     })
     it('should have default states', async () => {
         // console.log(wrapper)
@@ -45,5 +45,14 @@ describe('App', () => {
     })
 
     it('conbineObj should return correct Obj')
+
+    //
+
+    it('the state of cardType should update when button is clicked', async () => {
+        const wrapper = await shallow(<App />)
+
+        wrapper.find('.people-btn').simulate('click');
+        expect(wrapper.state().cardType).toEqual('people')
+    })
 
 })
