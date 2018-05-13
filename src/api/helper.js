@@ -1,12 +1,14 @@
 import { fetchApi, singleUrl} from './api'
 
-export const getHomeWorld = (categoryObj) => {
-
-   try { const categoryArray = categoryObj.results;
+export const getHomeWorld = async (categoryObj) => {
+  
+  //  try { 
+    const categoryArray = categoryObj.results;
+    
   
     const unresolvedPromises = categoryArray.map( async (peopleKey) => {
-      const response = await fetch(peopleKey.homeworld)
-      const data = await response.json()
+      const data = await singleUrl(peopleKey.homeworld)
+      // const data = await response.json()
   
       return { 
         dynamic1: peopleKey.name, 
@@ -14,11 +16,12 @@ export const getHomeWorld = (categoryObj) => {
         dynamic3: data.population 
       }
     })
+
+    return await Promise.all(unresolvedPromises)
   
-    return Promise.all(unresolvedPromises)
-  } catch(error) {
-      throw new Error('Fetch failed')
-  } 
+  // } catch(error) {
+  //     throw new Error('Fetch failed')
+  // } 
 }
 
 export const getSpecies = async (categoryData) => {
@@ -26,34 +29,34 @@ export const getSpecies = async (categoryData) => {
   // try{
     const categoryArray = categoryData.results
     const unresolvedPromises = await categoryArray.map( async (peopleKey) => {
-      const response = await fetch(peopleKey.species)
-      const data = await response.json()
+      const data = await singleUrl(peopleKey.species)
+      // const data = await response.json()
 
   
       return {dynamic4: data.name}
     })
-    return Promise.all(unresolvedPromises)
-  //   } catch(error) {
-  //     throw new Error('unsuccessful fetch for species')
+    return await Promise.all(unresolvedPromises)
+    // } catch(error) {
+    //   throw new Error('unsuccessful fetch for species')
     // }
   }
 
-  const getPlanetResidents = (residents) => {
+  const getPlanetResidents = async (residents) => {
     const unresolvedPromises = residents.map( async (resident) => {
       const response = await singleUrl(resident)
-      const name = await response.json()
-      return name;
+      // const name = await response.json()
+      return response;
     })
 
-    return Promise.all(unresolvedPromises);
+    return await Promise.all(unresolvedPromises);
   } 
 
-  export const getPlanetDetails = (categoryData) => {
+  export const getPlanetDetails = async (categoryData) => {
     const categoryArray = categoryData.results
     
-    const unresolvedPromises = categoryArray.map( async (planet) => {
+    const unresolvedPromises = categoryArray.map( async (planet) => { 
       const { name, terrain, climate, population, residents } = planet;
-      console.log('residents', residents)
+     
       const residentArr = await getPlanetResidents(residents);
       const residentName = residentArr.map((resident) => {
         return resident.name
@@ -67,15 +70,14 @@ export const getSpecies = async (categoryData) => {
         dynamic5: residentName.join(', ')
       }
     })
-    return Promise.all(unresolvedPromises)
+    return await Promise.all(unresolvedPromises)
   }
 
 
 export const getVehicleDetails = (categoryObj) => {
-
   const categoryArray = categoryObj.results;
 
-  const unresolvedPromises = categoryArray.map( async (car) => {
+  const stuff = categoryArray.map( (car) => {
      const { name, model, manufacturer, passengers } = car;
      return {
        dynamic1: car.name,
@@ -84,6 +86,7 @@ export const getVehicleDetails = (categoryObj) => {
        dynamic4: car.passengers
      }
   })
-  return Promise.all(unresolvedPromises)
+
+  return stuff
 }
  
