@@ -11,12 +11,14 @@ export const fetchApi = async (category) => {
 }
 
 export const singleUrl = async (url) => {
-  
-  const response = await fetch(url)
-  const parsed = await response.json();
+  try {
+    const response = await fetch(url)
+    const parsed = await response.json();
 
-  return parsed;
+    return parsed;
+  } catch (error) {
+    throw new Error('Single Url fetch failed')
+  }
 }
-
 
 

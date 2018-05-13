@@ -2,7 +2,7 @@ import { fetchApi, singleUrl} from './api'
 
 export const getHomeWorld = async (categoryObj) => {
   
-  //  try { 
+   try { 
     const categoryArray = categoryObj.results;
     
   
@@ -19,14 +19,14 @@ export const getHomeWorld = async (categoryObj) => {
 
     return await Promise.all(unresolvedPromises)
   
-  // } catch(error) {
-  //     throw new Error('Fetch failed')
-  // } 
+  } catch(error) {
+      throw new Error('Fetch failed')
+  } 
 }
 
 export const getSpecies = async (categoryData) => {
 
-  // try{
+  try{
     const categoryArray = categoryData.results
     const unresolvedPromises = await categoryArray.map( async (peopleKey) => {
       const data = await singleUrl(peopleKey.species)
@@ -36,9 +36,9 @@ export const getSpecies = async (categoryData) => {
       return {dynamic4: data.name}
     })
     return await Promise.all(unresolvedPromises)
-    // } catch(error) {
-    //   throw new Error('unsuccessful fetch for species')
-    // }
+    } catch(error) {
+      throw new Error('unsuccessful fetch for species')
+    }
   }
 
   const getPlanetResidents = async (residents) => {

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react';
 // import renderer from 'react-test-renderer';
 import App from './App.js';
 import { shallow } from 'enzyme';
@@ -25,6 +26,7 @@ describe('App', () => {
         expect(wrapper.state().vehicles).toEqual([])
         expect(wrapper.state().planets).toEqual([])
         expect(wrapper.state().cleanedCardData).toEqual([])
+        expect(wrapper.state().cardType).toEqual('')
 
     })
 
@@ -49,10 +51,10 @@ describe('App', () => {
     //
 
     it('the state of cardType should update when button is clicked', async () => {
-        const wrapper = await shallow(<App />)
+        // const wrapper = await shallow(<App />)
 
-        wrapper.find('.people-btn').simulate('click');
-        expect(wrapper.state().cardType).toEqual('people')
+        app.find('.people-btn').simulate('click');
+        expect(app.state('cardType')).toEqual('people')
     })
 
 })
