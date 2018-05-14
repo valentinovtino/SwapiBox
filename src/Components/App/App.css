@@ -1,3 +1,47 @@
+@font-face {
+  font-family: SWheader;
+  src: url(../../fonts/Starjout.ttf);
+}
+
+@font-face {
+  font-family: SWbutton;
+  src: url(../../fonts/bad-mofo.regular.ttf);
+}
+
 .btn-container {
-  border: 1px solid black;
-  width: 50%; }
+  /* border: 1px solid black; */
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
+
+.button {
+border: none;
+width: 100px;
+height: 100px;
+text-align: center;
+background: transparent;
+color: white;
+font-size: xx-large;
+font-family: 'SWbutton';
+letter-spacing: 5px;
+text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* .button:hover {
+  color: yellow;
+  text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
+} */
+
+
+.title {
+  /* color: yellow; */
+  text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;
+  text-align: center;
+  font-family: 'SWheader';
+  font-size: 50px;
+  margin: auto;
+}
+
+

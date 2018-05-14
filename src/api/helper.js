@@ -8,13 +8,13 @@ export const getHomeWorld = async (categoryObj) => {
   
     const unresolvedPromises = categoryArray.map( async (peopleKey) => {
       const data = await singleUrl(peopleKey.homeworld)
-      // const data = await response.json()
+ 
   
       return { 
         dynamic1: peopleKey.name, 
         dynamic2: data.name, 
         dynamic3: data.population, 
-        isFav: false 
+        Favorite: false 
       }
     })
 
@@ -43,7 +43,7 @@ export const getSpecies = async (categoryData) => {
   }
 
   const getPlanetResidents = async (residents) => {
-    const unresolvedPromises = residents.map( async (resident) => {
+    const unresolvedPromises = await residents.map( async (resident) => {
       const response = await singleUrl(resident)
       // const name = await response.json()
       return response;
@@ -68,7 +68,8 @@ export const getSpecies = async (categoryData) => {
         dynamic2: climate,
         dynamic3: terrain, 
         dynamic4: population,
-        dynamic5: residentName.join(', ')
+        dynamic5: residentName.join(', '),
+        Favorite: false
       }
     })
     return await Promise.all(unresolvedPromises)
@@ -84,7 +85,8 @@ export const getVehicleDetails = (categoryObj) => {
        dynamic1: car.name,
        dynamic2: car.model,
        dynamic3: car.manufacturer,
-       dynamic4: car.passengers
+       dynamic4: car.passengers,
+       Favorite: false
      }
   })
 

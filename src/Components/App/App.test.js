@@ -20,8 +20,8 @@ describe('App', () => {
 
     expect(app).toMatchSnapshot();
   });
+
   it('should have default states', async () => {
-    // console.log(wrapper)
     const wrapper = await shallow(<App />);
     expect(wrapper.state().film).toEqual([]);
     expect(wrapper.state().people).toEqual([]);
@@ -47,12 +47,12 @@ describe('App', () => {
         results: mockPeopleObj
       })
     })
-    )
+    );
 
-    expect(window.fetch).not.toHaveBeenCalled()
+    expect(window.fetch).not.toHaveBeenCalled();
     await getpeopleData(mockPeopleObj);
-    expect(window.fetch).toHaveBeenCalledWith(mockPeopleObj)
-    expect(app.state('people')).toEqual(mockPeopleObj)
+    expect(window.fetch).toHaveBeenCalledWith(mockPeopleObj);
+    expect(app.state('people')).toEqual(mockPeopleObj);
   });
 
   it.skip(' getPlanetData should setState of people when called', async () => {
@@ -62,12 +62,12 @@ describe('App', () => {
         results: mockPeopleObj
       })
     })
-    )
+    );
 
-    expect(window.fetch).not.toHaveBeenCalled()
+    expect(window.fetch).not.toHaveBeenCalled();
     await getPlanetData(mockPeopleObj);
-    expect(window.fetch).toHaveBeenCalledWith(mockPlanetObj)
-    expect(app.state('planets')).toEqual(mockPlanetObj)
+    expect(window.fetch).toHaveBeenCalledWith(mockPlanetObj);
+    expect(app.state('planets')).toEqual(mockPlanetObj);
   });
 
   it.skip(' getVehicleData should setState of people when called', async () => {
@@ -77,12 +77,12 @@ describe('App', () => {
         results: mockVehicleObj
       })
     })
-    )
+    );
 
-    expect(window.fetch).not.toHaveBeenCalled()
+    expect(window.fetch).not.toHaveBeenCalled();
     await getpeopleData(mockPeopleObj);
-    expect(window.fetch).toHaveBeenCalledWith(mockPlanetObj)
-    expect(app.state('vehicles')).toEqual(mockPlanetObj)
+    expect(window.fetch).toHaveBeenCalledWith(mockPlanetObj);
+    expect(app.state('vehicles')).toEqual(mockPlanetObj);
   });
 
   it('should call fetchApi', () => {
@@ -93,10 +93,31 @@ describe('App', () => {
 
   });
     
+  it('conbineObj should return correct Obj', () => {
+    
+  });
 
-  it('conbineObj should return correct Obj');
+  it('on handleClick, it should make a fetch call and pass the correct type through the api and cleaner functions', async () => {
+    expect(app.instance().state.vehicles).not.toBeDefined();
+    
+    const e = { target: {id: 'vehicles'}};
+    const data = {
+      results: [{
+        "crew": "46",
+        "model": "Digger Crawler",
+        "name": "Sand Crawler",
+        "passengers": "30",
+        "vehicle_class": "wheeled"
+      }]
+    };
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.resolve(data)
+    }));
+    
+    app.instance().handleClick(e);
+    app.update();
 
-  //
-
+    expect(window.fetch).toHaveBeenCalled();
+  });
 
 });
