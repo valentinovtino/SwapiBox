@@ -1,6 +1,5 @@
-Homepage:
-![alt test][logo] 
-[logo]: https://github.com/valentinovtino/SwapiBox/blob/master/src/Images/Image1.png
+![main screen](./src/Images/Image1.png)
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
