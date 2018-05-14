@@ -1,7 +1,7 @@
 import React from 'react';
 // import { fetchApi } from '../../api/api.js';
 import Card from '../Card/Card';
-import './CardContainer.css'
+import './CardContainer.css';
 // import { getHomeWorld, getSpecies, getPlanetDetails, getVehicleDetails } from '../../api/helper.js';
 import PropTypes from 'prop-types';
 

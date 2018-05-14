@@ -1,7 +1,7 @@
-import React, { Component }from 'react';
+import React, { Component } from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
-import star from '../../Images/favorites.svg'
+import star from '../../Images/favorites.svg';
 
 class Card extends Component {
 

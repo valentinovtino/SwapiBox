@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { fetchApi } from '../../api/api.js';
-import './FilmCrawl.css'
+import './FilmCrawl.css';
 
 class FilmCrawl extends Component{
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       filmData: {}
-    }
+    };
   }
 
 cleaner = (filmData) => {
-  const { title, opening_crawl, release_date } = filmData
-  return { title, release_date, opening_crawl }
+  const { title, opening_crawl, release_date } = filmData;
+  return { title, release_date, opening_crawl };
 }
 
 async componentDidMount() {
-  const randomNum = Math.floor((Math.random() * 6) + 1)
-  const category = `films/${randomNum}`
-  const filmData = await fetchApi(category)
-  const cleanData = this.cleaner(filmData)
-  this.setState({filmData})
+  const randomNum = Math.floor((Math.random() * 6) + 1);
+  const category = `films/${randomNum}`;
+  const filmData = await fetchApi(category);
+  const cleanData = this.cleaner(filmData);
+  this.setState({filmData});
 }
 
 render() {
@@ -44,7 +44,7 @@ render() {
       </section>
 
     </div>
-  )
+  );
 }
 }
 
