@@ -23,15 +23,15 @@ async componentDidMount() {
   this.setState({filmData})
 }
 
-  render() {
-    return(
-        <div>
-          <h1 className='font'>{this.state.filmData.title}</h1>
-          <p className='font'>{this.state.filmData.release_date}</p>
-          <h3 className='font'>{this.state.filmData.opening_crawl}</h3>
-        </div>
-      )
-  }
+render() {
+  return(
+    <div>
+      <h1 className='font'>{this.state.filmData.title}</h1>
+      <p className='font'>{this.state.filmData.release_date}</p>
+      <h3 className='font'>{this.state.filmData.opening_crawl}</h3>
+    </div>
+  )
+}
 }
 
 export default FilmCrawl;

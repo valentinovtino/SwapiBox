@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import api from '../../api/api.js'
+import api from '../../api/api.js';
 import FilmCrawl from '../FilmCrawl/FilmCrawl.js';
 import { CardContainer } from '../CardContainer/CardContainer.js';
 import { getHomeWorld, getSpecies, getPlanetDetails, getVehicleDetails } from '../../api/helper.js';
 import { fetchApi } from '../../api/api.js';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   constructor(props) {
@@ -17,42 +18,56 @@ class App extends Component {
       planets: [],
       cleanedCardData: [],
       initialFetchedObj: [],
-      favorite: []
+      favorites: []
+    };
+  }
+
+  handleFavorite = (element) => {
+    const found = this.state.favorites.find(card => {
+      return element.dynamic1 === card.dynamic1;
+    });
+
+    if (!found) {
+      this.setState({ favorites: [...this.state.favorites, element] });
+
+    } else {
+      const removeFav = this.state.favorites.filter(card => {
+        return element.dynamic1 !== card.dynamic1;
+      });
+      this.setState({ favorites: removeFav });
     }
   }
 
-  handleFavClick = (element) => {
-      console.log(element)
-  }
-
-  handleClick = (event) => { 
-    this.setState({ cardType: event.target.value }, () => {this.initialFetchCall()})
+  handleClick = (event) => {
+    this.setState({ cardType: event.target.value }, () => { this.initialFetchCall(); });
   }
 
   initialFetchCall = async () => {
-    const categoryData = await fetchApi(this.state.cardType)
+    if (this.state.cardType !== 'favorites') {
+      const categoryData = await fetchApi(this.state.cardType);
+      this.checkCardType(categoryData);
+    }
 
-    this.checkCardType(categoryData) 
   }
 
   getpeopleData = async (categoryData) => {
-    const homeWorldObj = await getHomeWorld(categoryData)
-    const speciesObj = await getSpecies(categoryData)
-    const cleanedCardData = this.combineObj(homeWorldObj, speciesObj)
-    
-    this.setState({ people: cleanedCardData })
+    const homeWorldObj = await getHomeWorld(categoryData);
+    const speciesObj = await getSpecies(categoryData);
+    const cleanedCardData = this.combineObj(homeWorldObj, speciesObj);
+
+    this.setState({ people: cleanedCardData });
   }
 
   getVehicleData = async (categoryData) => {
-    const vehicleObj = await getVehicleDetails(categoryData)
+    const vehicleObj = await getVehicleDetails(categoryData);
 
-    this.setState({ vehicles: vehicleObj })
+    this.setState({ vehicles: vehicleObj });
   }
-  
-  getPlanetData = async (categoryData) => {
-    const planetObj = await getPlanetDetails(categoryData)
 
-    this.setState({ planets: planetObj })
+  getPlanetData = async (categoryData) => {
+    const planetObj = await getPlanetDetails(categoryData);
+
+    this.setState({ planets: planetObj });
   }
 
   checkCardType = async (categoryData) => {
@@ -63,32 +78,32 @@ class App extends Component {
       this.getPlanetData(categoryData);
     }
     else if (this.state.cardType === 'vehicles') {
-      this.getVehicleData(categoryData)
+      this.getVehicleData(categoryData);
     }
 
-    localStorage.setItem([this.props.cardType], JSON.stringify(this.state[this.props.cardType]))
+    localStorage.setItem([this.props.cardType], JSON.stringify(this.state[this.props.cardType]));
   }
 
   combineObj = (homeWorldObj, speciesObj) => {
     let combo;
     const combinedObj = homeWorldObj.reduce((acc, item, i) => {
-      combo = Object.assign({}, speciesObj[i])
-      acc.push({ ...item, ...combo })
-      return acc
-    }, [])
-    return combinedObj
+      combo = Object.assign({}, speciesObj[i]);
+      acc.push({ ...item, ...combo });
+      return acc;
+    }, []);
+    return combinedObj;
   }
 
   checkForLocalStorage = () => {
-    !localStorage[this.props.cardType] ? this.initialFetchCall() : this.getFromLocalStorage()
+    !localStorage[this.props.cardType] ? this.initialFetchCall() : this.getFromLocalStorage();
   }
 
   getFromLocalStorage = () => {
-    const retrieveData = localStorage.getItem(this.props.cardType)
-    const parsedData = JSON.parse(retrieveData)
+    const retrieveData = localStorage.getItem(this.props.cardType);
+    const parsedData = JSON.parse(retrieveData);
 
     if (!this.state[this.props.cardType]) {
-      this.setState({ [this.props.cardType]: parsedData })
+      this.setState({ [this.props.cardType]: parsedData });
     }
 
   }
@@ -100,10 +115,15 @@ class App extends Component {
         <button onClick={this.handleClick} value='people' className='people-btn'>People</button>
         <button onClick={this.handleClick} value='planets' className='button'>Planets</button>
         <button onClick={this.handleClick} value='vehicles' className='button'>Vehicle</button>
-        <button>Favorites</button>
+        <button onClick={this.handleClick} value='favorites'
+          className='button'>Favorites</button>
 
         <div>
-          {this.state.cardType && <CardContainer handleFavClick={() => this.handleFavClick()} allState={this.state} />}
+          {this.state.cardType &&
+            <CardContainer
+              allState={this.state}
+              handleFavorite={this.handleFavorite}
+            />}
         </div>
 
       </div>
@@ -111,4 +131,10 @@ class App extends Component {
   }
 }
 
+App.propTypes = {
+  cardTypes: PropTypes.string
+};
+
 export default App;
+
+

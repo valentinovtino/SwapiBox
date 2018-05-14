@@ -20,7 +20,7 @@ ShallowWrapper {
       "children": Array [
         <FilmCrawl />,
         <button
-          className="button"
+          className="people-btn"
           onClick={[Function]}
           value="people"
 >
@@ -40,7 +40,11 @@ ShallowWrapper {
 >
           Vehicle
 </button>,
-        <button>
+        <button
+          className="button"
+          onClick={[Function]}
+          value="favorites"
+>
           Favorites
 </button>,
         <div />,
@@ -64,7 +68,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "People",
-          "className": "button",
+          "className": "people-btn",
           "onClick": [Function],
           "value": "people",
         },
@@ -106,6 +110,9 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Favorites",
+          "className": "button",
+          "onClick": [Function],
+          "value": "favorites",
         },
         "ref": null,
         "rendered": "Favorites",
@@ -134,7 +141,7 @@ ShallowWrapper {
         "children": Array [
           <FilmCrawl />,
           <button
-            className="button"
+            className="people-btn"
             onClick={[Function]}
             value="people"
 >
@@ -154,7 +161,11 @@ ShallowWrapper {
 >
             Vehicle
 </button>,
-          <button>
+          <button
+            className="button"
+            onClick={[Function]}
+            value="favorites"
+>
             Favorites
 </button>,
           <div />,
@@ -178,7 +189,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "People",
-            "className": "button",
+            "className": "people-btn",
             "onClick": [Function],
             "value": "people",
           },
@@ -220,6 +231,9 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Favorites",
+            "className": "button",
+            "onClick": [Function],
+            "value": "favorites",
           },
           "ref": null,
           "rendered": "Favorites",
