@@ -4,13 +4,15 @@ import Card from '../Card/Card';
 import './CardContainer.css'
 // import { getHomeWorld, getSpecies, getPlanetDetails, getVehicleDetails } from '../../api/helper.js';
 
-export const CardContainer = ({ allState }) => {
+export const CardContainer = ({ allState, handleFavClick }) => {
   const cardClicked = allState.cardType;
+  const faveClick = handleFavClick;
 
   const createCard = (data) => {
     const makeCard = data.map((element) => {
 
-      return <Card element={element} />;
+      return <Card 
+      faveClick={faveClick} element={element} />;
     });
 
     return makeCard;

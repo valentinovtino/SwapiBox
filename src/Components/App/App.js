@@ -17,7 +17,12 @@ class App extends Component {
       planets: [],
       cleanedCardData: [],
       initialFetchedObj: [],
+      favorite: []
     }
+  }
+
+  handleFavClick = () => {
+      console.log('wooo')
   }
 
   handleClick = (event) => { 
@@ -98,7 +103,7 @@ class App extends Component {
         <button>Favorites</button>
 
         <div>
-          {this.state.cardType && <CardContainer allState={this.state} />}
+          {this.state.cardType && <CardContainer addFavorite={() => this.handleFavClick()} allState={this.state} />}
         </div>
 
       </div>
