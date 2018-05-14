@@ -1,6 +1,7 @@
 import React, { Component }from 'react';
 import './Card.css';
 import PropTypes from 'prop-types';
+import star from '../../Images/favorites.svg'
 
 class Card extends Component {
 
@@ -10,12 +11,12 @@ class Card extends Component {
     return (
       <div className='card-container'>
         <div className='card'>
-          <h2 className='font'>{ dynamic1 }</h2>
-          <h3 className='font'>{ dynamic2 }</h3>
-          <h3 className='font'>{ dynamic3 }</h3>
-          <h3 className='font'>{ dynamic4}</h3>
-          <h3 className='font'>{ dynamic5}</h3>
-          <button className='favbtn' onClick = { () => this.props.handleFavorite({dynamic1, dynamic2, dynamic3, dynamic4, dynamic5}) }>Fave Me!</button>
+          <button className='favbtn body-font' onClick = { () => this.props.handleFavorite({dynamic1, dynamic2, dynamic3, dynamic4, dynamic5}) }><img src={star} width="100" height="50" /> </button>
+          <h2 className='font card-title'>{ dynamic1 }</h2>
+          <h3 className='font body-font'>{ dynamic2 }</h3>
+          <h3 className='font body-font'>{ dynamic3 }</h3>
+          <h3 className='font body-font'>{ dynamic4}</h3>
+          <h3 className='font body-font'>{ dynamic5}</h3>
 
         </div>
       </div>

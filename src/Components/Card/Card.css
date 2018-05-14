@@ -1,6 +1,19 @@
+@font-face {
+  font-family: SWbutton;
+  src: url(../../fonts/bad-mofo.regular.ttf);
+}
+
+.card-title {
+  font-family: 'SWbutton';
+  letter-spacing: 5px;
+}
+
+.body-font {
+  font-family: 'Mina', sans-serif;
+}
 .card {
   width: 260px;
-  height: 300px;
+  height: 333px;
   border: 1px solid white;
   padding: 10px;
   text-align: center;
@@ -14,10 +27,10 @@
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; }
 
 .favbtn {
- border: 1px solid white;
+ border: 1px solid transparent;
  text-align: center;
  background-color: transparent;
  color: white;
- font-size: large
+ font-size: large;
 
 }
