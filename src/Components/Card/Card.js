@@ -22,7 +22,7 @@ class Card extends Component {
             <h3 className='font'>{ dynamic3 }</h3>
             <h3 className='font'>{ dynamic4}</h3>
             <h3 className='font'>{ dynamic5}</h3>
-            <button onClick= {this.props.addFavorite} className='fav-btn'>FavMe</button>
+            <button onClick= {this.props.handleFavClick} className='fav-btn'>FavMe</button>
           </div>
         </div>
 

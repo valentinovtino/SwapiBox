@@ -103,7 +103,7 @@ class App extends Component {
         <button>Favorites</button>
 
         <div>
-          {this.state.cardType && <CardContainer addFavorite={() => this.handleFavClick()} allState={this.state} />}
+          {this.state.cardType && <CardContainer handleFavClick={() => this.handleFavClick()} allState={this.state} />}
         </div>
 
       </div>
