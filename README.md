@@ -1,4 +1,4 @@
-Home-Page:
+Homepage:
 ![alt test] (https://github.com/valentinovtino/SwapiBox/blob/master/src/Images/Image1.png)
 
 
