@@ -21,8 +21,8 @@ class App extends Component {
     }
   }
 
-  handleFavClick = () => {
-      console.log('wooo')
+  handleFavClick = (element) => {
+      console.log(element)
   }
 
   handleClick = (event) => { 

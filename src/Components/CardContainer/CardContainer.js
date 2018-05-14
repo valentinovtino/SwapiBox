@@ -6,13 +6,12 @@ import './CardContainer.css'
 
 export const CardContainer = ({ allState, handleFavClick }) => {
   const cardClicked = allState.cardType;
-  const handleFavClickBtn = handleFavClick;
 
   const createCard = (data) => {
     const makeCard = data.map((element) => {
 
       return <Card 
-      handleFavClick={handleFavClickBtn} element={element} />;
+      handleFavClick={handleFavClick} element={element} />;
     });
 
     return makeCard;
