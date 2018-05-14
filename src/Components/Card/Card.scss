@@ -1,13 +1,15 @@
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-}
+// .card-container {
+//     display: flex;
+//     flex-wrap: wrap;
+// }
 .card {
     width: 260px;
     height: 250px;
     border: 1px solid white;
     padding: 10px;
     text-align: center;
+    margin: 20px;
+    box-shadow: 5px 7px 5px yellow;
 }
 
 .font {

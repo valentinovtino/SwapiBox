@@ -3,58 +3,100 @@ import ReactDOM from 'react';
 // import renderer from 'react-test-renderer';
 import App from './App.js';
 import { shallow } from 'enzyme';
+import { mockPeople, mockPeopleObj, mockHomeWorld, mockPlanetObj, mockPlanets } from '../../mockData.js';
+import { getpeopleData } from './app.js';
 
 describe('App', () => {
-    let app;
+  let app;
     
 
-    beforeEach( async () => {
-        app = shallow(<App />, {disableLifecycleMethods: true})
+  beforeEach( async () => {
+    app = shallow(<App />, {disableLifecycleMethods: true});
 
+  });
+
+  it('should match the snapshot', () => {
+    // const appSnapShot = create(<App />).JSON;
+
+    expect(app).toMatchSnapshot();
+  });
+  it('should have default states', async () => {
+    // console.log(wrapper)
+    const wrapper = await shallow(<App />);
+    expect(wrapper.state().film).toEqual([]);
+    expect(wrapper.state().people).toEqual([]);
+    expect(wrapper.state().vehicles).toEqual([]);
+    expect(wrapper.state().planets).toEqual([]);
+    expect(wrapper.state().cleanedCardData).toEqual([]);
+    expect(wrapper.state().cardType).toEqual('');
+
+  });
+
+  it.skip('the state of cardType should update when button is clicked', async () => {
+    // const wrapper = await shallow(<App />)
+
+    app.find('.people-btn').simulate('click');
+    expect(app.state('cardType')).toEqual('people');
+  });
+  
+
+  it.skip(' getpeopleData should setState of people when called', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      status: 200,
+      json: () => Promise.resolve({
+        results: mockPeopleObj
+      })
     })
+    )
 
-    it('should match the snapshot', () => {
-        // const appSnapShot = create(<App />).JSON;
+    expect(window.fetch).not.toHaveBeenCalled()
+    await getpeopleData(mockPeopleObj);
+    expect(window.fetch).toHaveBeenCalledWith(mockPeopleObj)
+    expect(app.state('people')).toEqual(mockPeopleObj)
+  });
 
-        expect(app).toMatchSnapshot();
+  it.skip(' getPlanetData should setState of people when called', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      status: 200,
+      json: () => Promise.resolve({
+        results: mockPeopleObj
+      })
     })
-    it('should have default states', async () => {
-        // console.log(wrapper)
-       const wrapper = await shallow(<App />)
-        expect(wrapper.state().film).toEqual([])
-        expect(wrapper.state().people).toEqual([])
-        expect(wrapper.state().vehicles).toEqual([])
-        expect(wrapper.state().planets).toEqual([])
-        expect(wrapper.state().cleanedCardData).toEqual([])
-        expect(wrapper.state().cardType).toEqual('')
+    )
 
+    expect(window.fetch).not.toHaveBeenCalled()
+    await getPlanetData(mockPeopleObj);
+    expect(window.fetch).toHaveBeenCalledWith(mockPlanetObj)
+    expect(app.state('planets')).toEqual(mockPlanetObj)
+  });
+
+  it.skip(' getVehicleData should setState of people when called', async () => {
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      status: 200,
+      json: () => Promise.resolve({
+        results: mockVehicleObj
+      })
     })
+    )
 
-    it('should setState', () => {
+    expect(window.fetch).not.toHaveBeenCalled()
+    await getpeopleData(mockPeopleObj);
+    expect(window.fetch).toHaveBeenCalledWith(mockPlanetObj)
+    expect(app.state('vehicles')).toEqual(mockPlanetObj)
+  });
 
-    })
+  it('should call fetchApi', () => {
 
-    it('should call fetchApi', () => {
+  });
 
-    })
+  it('should call checkCardType with the correct params', () => {
 
-    it('should call checkCardType with the correct params', () => {
-
-    })
+  });
     
-    it('should update vehicle ste when getVehicleData is called', () => {
 
-    })
+  it('conbineObj should return correct Obj');
 
-    it('conbineObj should return correct Obj')
+  //
 
-    //
 
-    it('the state of cardType should update when button is clicked', async () => {
-        // const wrapper = await shallow(<App />)
-
-        app.find('.people-btn').simulate('click');
-        expect(app.state('cardType')).toEqual('people')
-    })
-
-})
+});

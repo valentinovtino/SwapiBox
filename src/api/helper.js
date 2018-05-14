@@ -13,7 +13,8 @@ export const getHomeWorld = async (categoryObj) => {
       return { 
         dynamic1: peopleKey.name, 
         dynamic2: data.name, 
-        dynamic3: data.population 
+        dynamic3: data.population, 
+        isFav: false 
       }
     })
 
