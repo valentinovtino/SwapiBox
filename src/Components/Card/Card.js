@@ -15,7 +15,8 @@ class Card extends Component {
           <h3 className='font'>{ dynamic3 }</h3>
           <h3 className='font'>{ dynamic4}</h3>
           <h3 className='font'>{ dynamic5}</h3>
-          <button onClick = { () => this.props.handleFavorite({dynamic1, dynamic2, dynamic3, dynamic4, dynamic5}) }>hola</button>
+          <button className='favbtn' onClick = { () => this.props.handleFavorite({dynamic1, dynamic2, dynamic3, dynamic4, dynamic5}) }>Fave Me!</button>
+
         </div>
       </div>
 

@@ -25,10 +25,24 @@ async componentDidMount() {
 
 render() {
   return(
-    <div>
-      <h1 className='font'>{this.state.filmData.title}</h1>
-      <p className='font'>{this.state.filmData.release_date}</p>
-      <h3 className='font'>{this.state.filmData.opening_crawl}</h3>
+    // <div className='crawl-container'>
+  <div className='body'>
+    <div className='fade'></div>
+
+
+      <section className='star-wars'>
+
+        <div className='crawl'>
+
+          <div className='title'>
+            <h1 className='font'>{this.state.filmData.title}</h1>
+            <p className='font'>{this.state.filmData.release_date}</p>
+          </div>
+            
+            <h3 className='font'>{this.state.filmData.opening_crawl}</h3>
+        </div>
+      </section>
+
     </div>
   )
 }

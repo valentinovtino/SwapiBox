@@ -111,20 +111,24 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <FilmCrawl />
-        <button onClick={this.handleClick} value='people' className='people-btn'>People</button>
-        <button onClick={this.handleClick} value='planets' className='button'>Planets</button>
-        <button onClick={this.handleClick} value='vehicles' className='button'>Vehicle</button>
-        <button onClick={this.handleClick} value='favorites'
-          className='button'>Favorites</button>
+          <h3 className='title'> SWapi Box </h3>
+        <div className='btn-container'>
+          <button onClick={this.handleClick} value='people' className='button'>People</button>
+          <button onClick={this.handleClick} value='planets' className='button'>Planets</button>
+          <button onClick={this.handleClick} value='vehicles' className='button'>Vehicle</button>
+          <button onClick={this.handleClick} value='favorites'
+            className='button'>Favorites</button>
+          
+        </div>
 
         <div>
           {this.state.cardType &&
             <CardContainer
-              allState={this.state}
-              handleFavorite={this.handleFavorite}
+            allState={this.state}
+            handleFavorite={this.handleFavorite}
             />}
         </div>
+            <FilmCrawl />
 
       </div>
     );
